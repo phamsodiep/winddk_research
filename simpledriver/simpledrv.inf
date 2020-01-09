@@ -1,0 +1,40 @@
+[Version]
+Signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=Tutorial
+CatalogFile=simpledrv.cat
+DriverVer=01/09/2020,1.0
+ 
+[Manufacturer]
+Tutorial=SimpleDrv,,NTamd64
+  
+[SimpleDrv]
+"Simple Driver"=Tutorial,sdrvId
+  
+[SourceDisksNames] 
+0="Install Disk" 
+ 
+[SourceDisksFiles] 
+simpledrv.sys=0 
+ 
+[DestinationDirs] 
+Files.Driver=12 
+Files.Driver.NTamd64=12 
+Files.Tools=11 
+  
+[Files.Driver] 
+simpledrv.sys
+ 
+[Tutorial] 
+CopyFiles=Files.Driver
+
+[Tutorial.Services] 
+AddService=simpledriver,0x00000002,Service 
+ 
+[Service] 
+ServiceType=0x00000001 
+StartType=0x00000000 
+ErrorControl=0x00000001 
+ServiceBinary=%12%\simpledrv.sys
+LoadOrderGroup=NDIS
